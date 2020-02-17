@@ -36,7 +36,8 @@
         },
         "classmap": [
             "database/seeds",
-            "database/factories"
+            "database/factories",
+            "app/Helpers"
         ]
     },
     "autoload-dev": {
@@ -57,5 +58,9 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ]
-    }
+    },
+    "files": [
+        "app/Helper/ResponseHelper.php"
+    ]
+
 }

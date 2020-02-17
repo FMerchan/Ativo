@@ -1,6 +1,8 @@
 <?php
 
 namespace App;
+use App\Training;
+
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,4 +28,20 @@ class Stage extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * Creo la relacion con la tabla.
+     **/
+    public function training()
+    {
+        return $this->belongsToMany(Training::class,'training_stage','id_stage','id_training');
+    }
+
+    /**
+     * Creo la relacion con la tabla.
+     **/
+    public function checkpoint()
+    {
+        return $this->belongsToMany(Checkpoint::class,'stage_checkpoint','id_stage','id_checkpoint');
+    }
 }

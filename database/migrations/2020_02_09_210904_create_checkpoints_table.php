@@ -15,12 +15,14 @@ class CreateCheckpointsTable extends Migration
     {
         Schema::create('checkpoint', function (Blueprint $table) {
             $table->bigIncrements('id_checkpoint');
+            $table->bigInteger('id_distance')->unsigned();
+            $table->bigInteger('id_duration')->unsigned();
             $table->bigInteger('id_level')->unsigned();
             $table->bigInteger('id_rythm_per_km')->unsigned();
-            $table->bigInteger('id_duration')->unsigned();
         });
 
         Schema::table('checkpoint', function (Blueprint $table) {
+            $table->foreign('id_distance')->references('id_distance')->on('distance');
             $table->foreign('id_level')->references('id_level')->on('level');
             $table->foreign('id_rythm_per_km')->references('id_rythm_per_km')->on('rythm_per_km');
             $table->foreign('id_duration')->references('id_duration')->on('duration');

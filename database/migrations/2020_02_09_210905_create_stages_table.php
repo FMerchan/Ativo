@@ -15,7 +15,7 @@ class CreateStagesTable extends Migration
     {
         Schema::create('stage', function (Blueprint $table) {
             $table->bigIncrements('id_stage');
-            $table->bigInteger('id_achievement')->unsigned();
+            $table->bigInteger('id_achievement')->unsigned()->nullable();
         });
         Schema::table('stage', function (Blueprint $table) {
             $table->foreign('id_achievement')->references('id_achievement')->on('achievement');
