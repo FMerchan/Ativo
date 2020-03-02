@@ -29,7 +29,8 @@ class TrainingController extends Controller
 					$training->stage[$key]->checkpoint;
 				}
 			}
-			
+			$trainings = ResponseHelper::removeKey($trainings);
+            // $trainings = array_values((array)$trainings) ;
     	} catch (\Exception $e) {
     		return ResponseHelper::armyResponse(false, 400, "Internal Error", "Error: " . $e->getMessage()) ;
     	}
