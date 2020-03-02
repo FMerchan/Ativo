@@ -15,14 +15,14 @@ class CreateStageCheckpointTable extends Migration
     {
         Schema::create('stage_checkpoint', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_stage')->unsigned();
-            $table->integer('id_checkpoint')->unsigned();
+            $table->bigInteger('id_stage')->unsigned();
+            $table->bigInteger('id_checkpoint')->unsigned();
         });
 
-        // Schema::table('stage_checkpoint', function (Blueprint $table) {
-        //     $table->foreign('id_stage')->references('id_stage')->on('stage');
-        //     $table->foreign('id_checkpoint')->references('id_checkpoint')->on('checkpoint');
-        // }); TODO RESOLVER
+        Schema::table('stage_checkpoint', function (Blueprint $table) {
+            $table->foreign('id_checkpoint')->references('id_checkpoint')->on('checkpoint');
+            $table->foreign('id_stage')->references('id_stage')->on('stage');
+        });
     }
 
     /**

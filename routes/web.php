@@ -35,3 +35,33 @@ Route::get('/modality/', 'ModalityController@getAll');
 // --------------------------
 
 
+
+// --------------------------
+// Rutas del controller de duracion.
+// --------------------------
+Route::get('/duration/exist/', 'DurationController@exist');
+Route::get('/duration/save/', 'DurationController@crear');
+Route::get('/duration/', 'DurationController@getAll');
+// Fin.
+// --------------------------
+
+
+// --------------------------
+// Rutas del controller de nivel.
+// --------------------------
+Route::get('/level/exist/', 'LevelController@exist');
+Route::get('/level/save/', 'LevelController@crear');
+Route::get('/level/', 'LevelController@getAll');
+// Fin.
+// --------------------------
+
+
+// --------------------------
+// Rutas del controller de Distancia.
+// --------------------------
+Route::get('/distance/exist/', 'DistanceController@exist');
+Route::get('/distance/save/', 'DistanceController@crear');
+Route::get('/distance/', 'DistanceController@getAll');
+// Fin.
+// --------------------------
+

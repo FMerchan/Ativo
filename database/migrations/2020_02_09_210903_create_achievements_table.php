@@ -21,6 +21,8 @@ class CreateAchievementsTable extends Migration
             $table->boolean('completed')->default(0);
             $table->unique('name');
         });
+
+        DB::unprepared('ALTER TABLE achievement ADD UNIQUE key unique_achievement (name)');
     }
 
     /**

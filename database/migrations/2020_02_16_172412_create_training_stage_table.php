@@ -14,17 +14,17 @@ class CreateTrainingStageTable extends Migration
     public function up()
     {
         Schema::create('training_stage', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('id_training')->unsigned();
-            $table->integer('id_stage')->unsigned();
+            $table->bigIncrements('id_training_stage');
+            $table->bigInteger('id_training')->unsigned();
+            $table->bigInteger('id_stage')->unsigned();
         });
 
-        // Schema::table('training_stage', function (Blueprint $table) {
-        //     $table->foreign('id_training')->references('id_training')->on('training');
-        //     $table->foreign('id_stage')->references('id_stage')->on('stage');
-        // }); TODO RESOLVER
+        Schema::table('training_stage', function (Blueprint $table) {
+            $table->foreign('id_training')->references('id_training')->on('training');
+            $table->foreign('id_stage')->references('id_stage')->on('stage');
+        });
 
-        DB::unprepared('ALTER TABLE checkpoint ADD UNIQUE key unique_training_stage (id_training,id_stage)');
+        DB::unprepared('ALTER TABLE training_stage ADD UNIQUE key unique_training_stage (id_training,id_stage)');
     }
 
     /**
