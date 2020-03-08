@@ -27,20 +27,13 @@ class Checkpoint extends Model
      */
     public $timestamps = false;
 
+
     /**
      * Creo la relacion con la tabla distance.
      **/
     public function distance()
     {
         return $this->belongsTo(distance::class, 'id_distance');
-    }
-
-    /**
-     * Creo la relacion con la tabla level.
-     **/
-    public function level()
-    {
-        return $this->belongsTo(level::class, 'id_level');
     }
 
     /**
@@ -56,7 +49,7 @@ class Checkpoint extends Model
      **/
     public function rythmPerKm()
     {
-        return $this->belongsTo(duration::class, 'id_rythm_per_km');
+        return $this->belongsTo(RythmPerKm::class, 'id_rythm_per_km');
     }
 
     /**

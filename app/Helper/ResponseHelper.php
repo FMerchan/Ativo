@@ -53,6 +53,7 @@ class ResponseHelper
 				unset($data[$key]);
 			}
 		}
+		
 		return $data;
 	}
 }

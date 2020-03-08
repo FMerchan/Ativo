@@ -26,4 +26,14 @@ class RythmPerKm extends Model
      * @var bool
      */
     public $timestamps = false;
+
+        /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'fmc_percentaje_base', 'fmc_percentaje_limit',
+    ];
+
 }
