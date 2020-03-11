@@ -31,6 +31,7 @@ Route::get('/training/', 'TrainingController@getAll');
 Route::get('/modality/find-name/{name}', 'ModalityController@getByName');
 Route::get('/modality/find-id/{id}', 'ModalityController@getById');
 Route::get('/modality/', 'ModalityController@getAll');
+// Route::get('/modality/find/', 'ModalityController@findByParameters');
 // Fin.
 // --------------------------
 
@@ -65,3 +66,12 @@ Route::get('/distance/', 'DistanceController@getAll');
 // Fin.
 // --------------------------
 
+// --------------------------
+// Rutas del controller de Distancia.
+// --------------------------
+Route::get('/calendar/year/{year}', 'CalendarEventController@getByYear');
+Route::get('/calendar/month/{month}', 'CalendarEventController@getByMonth');
+Route::get('/calendar/day/{day}', 'CalendarEventController@getByDay');
+Route::get('/calendar/', 'CalendarEventController@getAll');
+// Fin.
+// --------------------------

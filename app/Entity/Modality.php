@@ -11,14 +11,14 @@ class Modality extends Model
      *
      * @var string
      */
-    protected $table = 'modality​';
+    protected $table = 'modality';
 
     /**
      * The table id.
      *
      * @var string
      */
-    protected $primaryKey = 'id_modality​';
+    protected $primaryKey = 'id_modality';
 
     /**
      * Indicates if the model should be timestamped.

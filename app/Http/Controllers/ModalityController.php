@@ -15,13 +15,16 @@ class ModalityController extends Controller
     {
 		try {
 			// Cargo las modality.
-			$modality = Modality::all();
+			$modalitis = Modality::all();
 
+            foreach ($modalitis as $key => $modality) {
+                unset($modalitis[$key]['id_modality']);
+            }
     	} catch (\Exception $e) {
     		return ResponseHelper::armyResponse(false, 400, "Internal Error", "Error: " . $e->getMessage()) ;
     	}
 
-		return ResponseHelper::armyResponse(true, 200, $modality, "modality");
+		return ResponseHelper::armyResponse(true, 200, $modalitis, "modality");
     }
 
     /**
@@ -35,7 +38,7 @@ class ModalityController extends Controller
     		}
 			// Cargo las modality.
 			$modality = Modality::where('title' , '=', $title)->first();
-		
+            unset($modality['id_modality']);
     	} catch (\Exception $e) {
     		return ResponseHelper::armyResponse(false, 400, "Internal Error", "Error: " . $e->getMessage()) ;
     	}
@@ -53,10 +56,27 @@ class ModalityController extends Controller
     		}
 			// Cargo las modality.
 			$modality = Modality::find($id);
-			
+			unset($modality['id_modality']);
     	} catch (\Exception $e) {
     		return ResponseHelper::armyResponse(false, 400, "Internal Error", "Error: " . $e->getMessage()) ;
     	}
     	return ResponseHelper::armyResponse(true, 200, $modality, '');
+    }
+
+    /**
+     * Busca las modalidades segun la lista de parametros pasados.
+     * @param  Request  $request
+     * @return Response
+     **/
+    public function findByParameters(Request $request)
+    {
+        try {
+            // Cargo los parametros
+            $get = $request->query();
+
+        } catch (\Exception $e) {
+            return ResponseHelper::armyResponse(false, 400, "Internal Error", "Error: " . $e->getMessage()) ;
+        }
+        return ResponseHelper::armyResponse(true, 200, $modality, '');
     }
 }
