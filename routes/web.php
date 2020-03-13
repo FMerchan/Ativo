@@ -75,3 +75,17 @@ Route::get('/calendar/day/{day}', 'CalendarEventController@getByDay');
 Route::get('/calendar/', 'CalendarEventController@getAll');
 // Fin.
 // --------------------------
+
+
+// --------------------------
+// Rutas del controller de profile.
+// --------------------------
+Route::post('/profileee/', 'ProfileController@create');
+// Route::post('/profile/{id}', 'ProfileController@update');
+
+Route::get('/operator/', 'OperatorController@getAll');
+Route::get('/operator-plan/', 'OperatorPlanController@getAll');
+Route::get('/country/', 'CountryController@getAll');
+// Fin.
+// --------------------------
+

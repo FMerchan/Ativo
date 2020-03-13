@@ -15,15 +15,7 @@ class CreateProfilesTable extends Migration
     {
         Schema::create('profile', function (Blueprint $table) {
             $table->bigIncrements('id_profile');
-            $table->bigInteger('id_user_subscription')->unsigned();
-        });
-
-        Schema::table('profile', function (Blueprint $table) {
-            $table->foreign('id_user_subscription')->references('id_user_subscription')->on('user_subscription');
-        });
-
-        DB::unprepared('ALTER TABLE profile ADD UNIQUE key unique_user_subscription (id_user_subscription)');
-        
+        }); 
     }
 
     /**

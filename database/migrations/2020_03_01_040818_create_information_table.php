@@ -15,7 +15,6 @@ class CreateInformationTable extends Migration
     {
         Schema::create('information', function (Blueprint $table) {
             $table->bigIncrements('id_information');
-            $table->bigInteger('id_user_subscription')->unsigned();
             $table->string('name_last_name', 70);
             $table->string('city', 50);
             $table->string('email', 50);

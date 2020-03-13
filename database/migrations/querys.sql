@@ -161,6 +161,21 @@ INSERT INTO modality (id_modality​, title, description, photo, link) VALUES
 
 
 ---------------------------------------------------------------------------------------------------------------
+--------- Parte 2.
+---------------------------------------------------------------------------------------------------------------
+INSERT INTO operator (id_operator, name) VALUES (1, "Claro"),(2, "Vivo");
+
+INSERT INTO operator_plan (id_operator_plan, name, cost, id_operator) VALUES 
+(NULL, "Mensual",5.4,1),
+(NULL, "Semanal",1.0,1),
+(NULL, "Diario",8.9,1),
+(NULL, "Mensual",5.4,2),
+(NULL, "Semanal",6.3,2),
+(NULL, "Diario",5.0,2);
+
+INSERT INTO country (id_country, name, country_code) VALUES (NULL, 'Brazil', '+55'); 
+
+---------------------------------------------------------------------------------------------------------------
 --------- Extras.
 ---------------------------------------------------------------------------------------------------------------
 DELETE FROM stage_checkpoint;
@@ -179,6 +194,90 @@ stage 		-> etapa
 achievement -> logro
 rythmPerKm 	-> ritmo por km
 checkpoint 	-> control
+
+
+
+
+{"profile":
+	{
+		"userSubscription":
+		{
+			"id_operator_plan":2,
+			"is_valid":true
+		},
+		"information":
+		{
+			"name_last_name":"Facundo Merchan",
+			"city":"Sao Pablo",
+			"email":"facundo@gmail.com",
+			"notification_available":true,
+			"gender":"M",
+			"weight":80,
+			"height":1.80,
+			"photo":"aaaaa",
+			"id_country":1,
+			"id_phone_number":{
+				"id_country":1,
+				"area_code":54,
+				"number":1125454122
+			}
+		}
+	}
+}
+
+
+---------------------------------------------------------------------------------------------------------------
+--------- Curl GET.
+---------------------------------------------------------------------------------------------------------------
+
+---- Training.
+curl -i -X GET -H 'Content-Type: application/json' "http://localhost:8000/training/"
+curl -i -X GET -H 'Content-Type: application/json' "http://localhost:8000/training/find-name/[NAME]"
+curl -i -X GET -H 'Content-Type: application/json' "http://localhost:8000/training/find-id/[ID]"
+
+---- Modality.
+curl -i -X GET -H 'Content-Type: application/json' "http://localhost:8000/modality/"
+curl -i -X GET -H 'Content-Type: application/json' "http://localhost:8000/modality/find-name/[NAME]"
+curl -i -X GET -H 'Content-Type: application/json' "http://localhost:8000/modality/find-id/[ID]"
+
+
+
+
+---- Duration.
+curl -i -X GET -H 'Content-Type: application/json' "http://127.0.0.1:8000/duration/"
+curl -i -X GET -H 'Content-Type: application/json' "http://127.0.0.1:8000/duration/exist/?name=Iniciante&value=5.00&unit=semanas"
+curl -i -X GET -H 'Content-Type: application/json' "http://127.0.0.1:8000/duration/save/?name=Iniciante&value=5.00&unit=semanasss"
+
+
+---- Distance.
+curl -i -X GET -H 'Content-Type: application/json' "http://127.0.0.1:8000/distance/"
+curl -i -X GET -H 'Content-Type: application/json' "http://127.0.0.1:8000/distance/exist/?name=Iniciante&value=5.00&unit=semanas"
+curl -i -X GET -H 'Content-Type: application/json' "http://127.0.0.1:8000/distance/save/?name=Iniciante&value=5.00&unit=semanasss"
+
+
+---- Level.
+curl -i -X GET -H 'Content-Type: application/json' "http://127.0.0.1:8000/level/"
+curl -i -X GET -H 'Content-Type: application/json' "http://127.0.0.1:8000/level/exist/?name=Iniciante&value=1"
+curl -i -X GET -H 'Content-Type: application/json' "http://127.0.0.1:8000/level/save/?name=Iniciante&value=5.00"
+
+
+
+curl -i -X GET -H 'Content-Type: application/json' ""
+curl -i -X GET -H 'Content-Type: application/json' ""
+curl -i -X GET -H 'Content-Type: application/json' ""
+
+
+---------------------------------------------------------------------------------------------------------------
+--------- Curl Post.
+---------------------------------------------------------------------------------------------------------------
+---- Save Prfile
+curl -i -X POST -H 'Content-Type: application/json' -d '{"profile":{"userSubscription":{"id_operator_plan":2,"is_valid":true},"information":{"name_last_name":"Facundo Merchan","city":"Sao Pablo","email":"facundo@gmail.com","notification_available":true,"gender":"M","weight":80,"height":1.80,"photo":"aaaaa","id_country":1,"id_phone_number":{"id_country":1,"area_code":54,"number":1125454122}}}}' http://localhost:8000/profile/
+
+
+
+
+
+
 
 
 

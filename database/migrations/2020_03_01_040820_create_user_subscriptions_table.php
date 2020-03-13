@@ -18,12 +18,17 @@ class CreateUserSubscriptionsTable extends Migration
             $table->bigInteger('id_operator')->unsigned();
             $table->bigInteger('id_operator_plan')->unsigned();
             $table->bigInteger('is_valid')->unsigned();
+            $table->bigInteger('id_profile')->unsigned();
         });
 
         Schema::table('user_subscription', function (Blueprint $table) {
+            $table->foreign('id_profile')->references('id_profile')->on('profile');
             $table->foreign('id_operator')->references('id_operator')->on('operator');
             $table->foreign('id_operator_plan')->references('id_operator_plan')->on('operator_plan');
         });
+
+        
+        DB::unprepared('ALTER TABLE user_subscription ADD UNIQUE key unique_user_subscription (id_profile)');
     }
 
     /**
