@@ -270,15 +270,13 @@ curl -i -X GET -H 'Content-Type: application/json' ""
 ---------------------------------------------------------------------------------------------------------------
 --------- Curl Post.
 ---------------------------------------------------------------------------------------------------------------
+
+curl -i -X GET -H 'Content-Type: application/json' "http://127.0.0.1:8000/operator/"
+curl -i -X GET -H 'Content-Type: application/json' "http://127.0.0.1:8000/operator-plan/"
+curl -i -X GET -H 'Content-Type: application/json' "http://127.0.0.1:8000/country/"
+
 ---- Save Prfile
 curl -i -X POST -H 'Content-Type: application/json' -d '{"profile":{"userSubscription":{"id_operator_plan":2,"is_valid":true},"information":{"name_last_name":"Facundo Merchan","city":"Sao Pablo","email":"facundo@gmail.com","notification_available":true,"gender":"M","weight":80,"height":1.80,"photo":"aaaaa","id_country":1,"id_phone_number":{"id_country":1,"area_code":54,"number":1125454122}}}}' http://localhost:8000/profile/
-
-
-
-
-
-
-
 
 
 
