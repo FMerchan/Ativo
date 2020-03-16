@@ -24,7 +24,6 @@ Route::get('/training/', 'TrainingController@getAll');
 // Fin.
 // --------------------------
 
-
 // --------------------------
 // Rutas del controller de entrenamiento.
 // --------------------------
@@ -36,7 +35,6 @@ Route::get('/modality/', 'ModalityController@getAll');
 // --------------------------
 
 
-
 // --------------------------
 // Rutas del controller de duracion.
 // --------------------------
@@ -46,7 +44,6 @@ Route::get('/duration/', 'DurationController@getAll');
 // Fin.
 // --------------------------
 
-
 // --------------------------
 // Rutas del controller de nivel.
 // --------------------------
@@ -55,7 +52,6 @@ Route::get('/level/save/', 'LevelController@crear');
 Route::get('/level/', 'LevelController@getAll');
 // Fin.
 // --------------------------
-
 
 // --------------------------
 // Rutas del controller de Distancia.
@@ -76,13 +72,22 @@ Route::get('/calendar/', 'CalendarEventController@getAll');
 // Fin.
 // --------------------------
 
-
 // --------------------------
 // Rutas del controller de profile.
 // --------------------------
-Route::post('/profileee/', 'ProfileController@create');
-// Route::post('/profile/{id}', 'ProfileController@update');
+// Rutas profile.
+Route::post('/profile/', 'ProfileController@create');
+Route::post('/profile/{number}', 'ProfileController@update');
+Route::get('/profile/{number}', 'ProfileController@getByNumber');
+// Rutas Training.
+Route::get('/profile/training/{number}', 'ProfileController@createTraining');
+Route::get('/profile/training/update/{number}', 'ProfileController@updateTraining');
+Route::get('/profile/training/find/{number}', 'ProfileController@getTrainingsByNumber');
+// Rutas achievement.
+Route::get('/profile/add-achievement/{number}', 'ProfileController@addAchievement');
+Route::get('/profile/achievement/{number}', 'ProfileController@getAchievement');
 
+// Rutas Datos Fijos.
 Route::get('/operator/', 'OperatorController@getAll');
 Route::get('/operator-plan/', 'OperatorPlanController@getAll');
 Route::get('/country/', 'CountryController@getAll');

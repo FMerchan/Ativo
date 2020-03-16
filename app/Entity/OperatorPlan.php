@@ -35,4 +35,23 @@ class OperatorPlan extends Model
     {
         return $this->belongsTo(operator::class, 'id_operator');
     }
+
+    /**
+     * Verifica que existe el plan
+     * @var int id, el id del country a verificar la existencia.
+     * @return retorna false en caso de no existir o el objeto en caso de existir.
+     **/
+    public function exist( int $id )
+    {
+        if ($id != '' && $id > 0) {
+            // Cargo las modality.
+            $operatorPlan = OperatorPlan::where( ["id_operator_plan" => $id] )->get();
+
+            if (count($operatorPlan) > 0) {
+                return $operatorPlan;
+            }
+        }
+
+        return false;
+    }
 }

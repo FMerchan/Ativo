@@ -103,22 +103,22 @@ class TrainingController extends Controller
             
             // Quito los id.
             if ($removeId){
-                unset($training->stage[$key]['id_stage']);
-                unset($training->stage[$key]['id_achievement']);
-                unset($training->stage[$key]['pivot']);
+                // unset($training->stage[$key]['id_stage']);
+                // unset($training->stage[$key]['id_achievement']);
+                // unset($training->stage[$key]['pivot']);
             }
         }
 
         // Quito el id de entrenamiento.
         if ($removeId){
-            unset($training["id_training"]);
-            unset($training["id_level"]);
-            unset($training["id_distance"]);
-            unset($training["id_duration"]);
+            // unset($training["id_training"]);
+            // unset($training["id_level"]);
+            // unset($training["id_distance"]);
+            // unset($training["id_duration"]);
 
-            unset($training->level["id_level"]);
-            unset($training->distance["id_distance"]);
-            unset($training->duration["id_duration"]);
+            // unset($training->level["id_level"]);
+            // unset($training->distance["id_distance"]);
+            // unset($training->duration["id_duration"]);
         }
         return $training; 
     }
@@ -133,33 +133,19 @@ class TrainingController extends Controller
         $checkpoint->rythmPerKm;
         // Quito el id de entrenamiento.
         if ($removeId){
-            unset($checkpoint["id_checkpoint"]);
-            unset($checkpoint["id_rythm_per_km"]);
-            unset($checkpoint["id_distance"]);
-            unset($checkpoint["id_duration"]);
-            unset($checkpoint->rythmPerKm["id_rythm_per_km"]);
-            if ($checkpoint->distance) {
-                unset($checkpoint->distance["id_distance"]);
-            }
-            if ($checkpoint->duration) {
-                 unset($checkpoint->duration["id_duration"]);
-            }
-            unset($checkpoint->pivot);
+            // unset($checkpoint["id_checkpoint"]);
+            // unset($checkpoint["id_rythm_per_km"]);
+            // unset($checkpoint["id_distance"]);
+            // unset($checkpoint["id_duration"]);
+            // unset($checkpoint->rythmPerKm["id_rythm_per_km"]);
+            // if ($checkpoint->distance) {
+            //     unset($checkpoint->distance["id_distance"]);
+            // }
+            // if ($checkpoint->duration) {
+            //      unset($checkpoint->duration["id_duration"]);
+            // }
+            // unset($checkpoint->pivot);
 
         }
-    }
-
-    function remove_keys($arr, $table) {
-      $temp_array = array();
-      foreach ($arr as $key => $val) {
-        $object = new stdClass();
-        $x = (array) $val;
-        foreach ($x as $key2 => $value) {
-          $new_key = str_replace($table, '', $key2);
-          $object->$new_key = $value;
-        }
-        $temp_array[] = $object;
-      }
-      return $temp_array;
     }
 }

@@ -176,6 +176,20 @@ INSERT INTO operator_plan (id_operator_plan, name, cost, id_operator) VALUES
 INSERT INTO country (id_country, name, country_code) VALUES (NULL, 'Brazil', '+55'); 
 
 ---------------------------------------------------------------------------------------------------------------
+--------- Parte 3.
+---------------------------------------------------------------------------------------------------------------
+INSERT INTO achievement (id_achievement,name,date,photo,completed) VALUES
+(1,"LOGRO 1","2020-02-25","1",true),
+(2,"LOGRO 2","2020-03-03","2",true),
+(3,"LOGRO 3","2020-09-12","3",true);
+
+INSERT INTO calendar_event (id_calendar_event, name, description, important, image, city, type, link, date) VALUES
+(1,"Carrera1","Carrera1",1,"Carrera1","Sao Pablo","Carrera1","Carrera1","2020-02-25"),
+(2,"Carrera2","Carrera2",0,"Carrera2","Sao Pablo","Carrera2","Carrera2","2020-03-12"),
+(3,"Carrera3","Carrera3",0,"Carrera3","Sao Pablo","Carrera3","Carrera3","2020-02-20"),
+(4,"Carrera4","Carrera4",1,"Carrera4","Sao Pablo","Carrera4","Carrera4","2020-03-12");
+
+---------------------------------------------------------------------------------------------------------------
 --------- Extras.
 ---------------------------------------------------------------------------------------------------------------
 DELETE FROM stage_checkpoint;
@@ -195,7 +209,10 @@ achievement -> logro
 rythmPerKm 	-> ritmo por km
 checkpoint 	-> control
 
+SET FOREIGN_KEY_CHECKS = 0; TRUNCATE profile; TRUNCATE phone_number; TRUNCATE user_subscription; TRUNCATE information; SET FOREIGN_KEY_CHECKS = 1;
+SET FOREIGN_KEY_CHECKS = 0; TRUNCATE achievement; SET FOREIGN_KEY_CHECKS = 1;
 
+SET FOREIGN_KEY_CHECKS = 0; ALTER TABLE training_stage DROP index unique_training_stage; SET FOREIGN_KEY_CHECKS = 1;
 
 
 {"profile":
@@ -241,8 +258,6 @@ curl -i -X GET -H 'Content-Type: application/json' "http://localhost:8000/modali
 curl -i -X GET -H 'Content-Type: application/json' "http://localhost:8000/modality/find-id/[ID]"
 
 
-
-
 ---- Duration.
 curl -i -X GET -H 'Content-Type: application/json' "http://127.0.0.1:8000/duration/"
 curl -i -X GET -H 'Content-Type: application/json' "http://127.0.0.1:8000/duration/exist/?name=Iniciante&value=5.00&unit=semanas"
@@ -272,14 +287,5 @@ curl -i -X GET -H 'Content-Type: application/json' ""
 ---------------------------------------------------------------------------------------------------------------
 ---- Save Prfile
 curl -i -X POST -H 'Content-Type: application/json' -d '{"profile":{"userSubscription":{"id_operator_plan":2,"is_valid":true},"information":{"name_last_name":"Facundo Merchan","city":"Sao Pablo","email":"facundo@gmail.com","notification_available":true,"gender":"M","weight":80,"height":1.80,"photo":"aaaaa","id_country":1,"id_phone_number":{"id_country":1,"area_code":54,"number":1125454122}}}}' http://localhost:8000/profile/
-
-
-
-
-
-
-
-
-
 
 

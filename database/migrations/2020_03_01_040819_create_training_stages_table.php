@@ -17,14 +17,14 @@ class CreateTrainingStagesTable extends Migration
             $table->bigIncrements('id_training_state');
             $table->bigInteger('id_stage')->unsigned();
             $table->bigInteger('id_checkpoint')->unsigned();
-            $table->bigInteger('id_training_with_stage')->unsigned();
+            $table->bigInteger('id_training_with_state')->unsigned();
             $table->boolean('is_current');
         });
 
         Schema::table('training_state', function (Blueprint $table) {
             $table->foreign('id_stage')->references('id_stage')->on('stage');
             $table->foreign('id_checkpoint')->references('id_checkpoint')->on('checkpoint');
-            $table->foreign('id_training_with_stage')->references('id_training_with_stage')->on('training_with_stage');
+            $table->foreign('id_training_with_state')->references('id_training_with_state')->on('training_with_state');
         });
     }
 
